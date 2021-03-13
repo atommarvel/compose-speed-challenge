@@ -23,9 +23,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.androiddevchallenge.ui.screen1.Screen1Root
-import com.example.androiddevchallenge.ui.screen2.Screen2Root
-import com.example.androiddevchallenge.ui.screen3.Screen3Root
+import com.example.androiddevchallenge.ui.screen1.WelcomeRoot
+import com.example.androiddevchallenge.ui.screen2.LoginRoot
+import com.example.androiddevchallenge.ui.screen3.HomeRoot
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
@@ -33,9 +33,9 @@ import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 val LocalNavController = compositionLocalOf<NavHostController> { error("No NavController") }
 
 // Screens in app
-const val Screen1Route = "screen_1"
-const val Screen2Route = "screen_2"
-const val Screen3Route = "screen_3"
+const val Welcome = "screen_1"
+const val Login = "screen_2"
+const val Home = "screen_3"
 // Example screen navigation: LocalNavController.current.navigate(Screen1Route)
 
 @Composable
@@ -47,11 +47,11 @@ fun ComposeApp(activity: Activity) {
             ProvideWindowInsets {
                 NavHost(
                     navController = LocalNavController.current,
-                    startDestination = Screen1Route
+                    startDestination = Welcome
                 ) {
-                    composable(Screen1Route) { Screen1Root() }
-                    composable(Screen2Route) { Screen2Root() }
-                    composable(Screen3Route) { Screen3Root() }
+                    composable(Welcome) { WelcomeRoot() }
+                    composable(Login) { LoginRoot() }
+                    composable(Home) { HomeRoot() }
                 }
             }
         }

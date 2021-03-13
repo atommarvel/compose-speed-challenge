@@ -18,19 +18,19 @@ package com.example.androiddevchallenge.ui.screen2
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.navigate
+import com.example.androiddevchallenge.Home
 import com.example.androiddevchallenge.LocalNavController
-import com.example.androiddevchallenge.Screen3Route
 import com.example.androiddevchallenge.ui.ExampleComposables
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun Screen2Root() {
+fun LoginRoot() {
     val navController = LocalNavController.current
-    Screen2 { navController.navigate(Screen3Route) }
+    Login { navController.navigate(Home) }
 }
 
 @Composable
-fun Screen2(onNavToNextScreen: () -> Unit = {}) {
+fun Login(onNavToNextScreen: () -> Unit = {}) {
     ExampleComposables(onNavToNextScreen)
 }
 
@@ -38,7 +38,7 @@ fun Screen2(onNavToNextScreen: () -> Unit = {}) {
 @Composable
 fun LightPreview() {
     MyTheme {
-        Screen2()
+        Login()
     }
 }
 
@@ -46,6 +46,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        Screen2()
+        Login()
     }
 }

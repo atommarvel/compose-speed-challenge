@@ -27,19 +27,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
-import com.example.androiddevchallenge.Screen1Route
+import com.example.androiddevchallenge.Welcome
 import com.example.androiddevchallenge.ui.ExampleComposables
 import com.example.androiddevchallenge.ui.common.MyTextField
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun Screen3Root() {
+fun HomeRoot() {
     val navController = LocalNavController.current
-    Screen3 { navController.navigate(Screen1Route) }
+    Home { navController.navigate(Welcome) }
 }
 
 @Composable
-fun Screen3(onNavToNextScreen: () -> Unit = {}) {
+fun Home(onNavToNextScreen: () -> Unit = {}) {
     val showExample = false
     if (showExample) {
         ExampleComposables(onNavToNextScreen)
@@ -75,7 +75,7 @@ fun Bottom() {
 @Composable
 fun LightPreview() {
     MyTheme {
-        Screen3()
+        Home()
     }
 }
 
@@ -83,6 +83,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        Screen3()
+        Home()
     }
 }
