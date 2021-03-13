@@ -26,8 +26,13 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -38,6 +43,7 @@ import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
 import com.example.androiddevchallenge.ui.common.MyChip
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.theme.green
 
 @Composable
 fun HomeRoot() {
@@ -72,19 +78,21 @@ val stocks: List<StockModel> by lazy {
 
 @Composable
 fun Home() {
-    LazyColumn {
-        item { TopNav() }
-        item { BalanceUpdates() }
-        item { Spacer(modifier = Modifier.height(32.dp)) }
-        item { Transact() }
-        item { Spacer(modifier = Modifier.height(16.dp)) }
-        item { PurchaseTypes() }
-        item { Spacer(modifier = Modifier.height(16.dp)) }
-        item { BigChart() }
-        item { Spacer(modifier = Modifier.height(32.dp)) }
-        item { PositionsHeader() }
-        items(stocks) { model ->
-            Stock(model)
+    Surface(color = MaterialTheme.colors.background) {
+        LazyColumn {
+            item { TopNav() }
+            item { BalanceUpdates() }
+            item { Spacer(modifier = Modifier.height(32.dp)) }
+            item { Transact() }
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            item { PurchaseTypes() }
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            item { BigChart() }
+            item { Spacer(modifier = Modifier.height(32.dp)) }
+            item { PositionsHeader() }
+            items(stocks) { model ->
+                Stock(model)
+            }
         }
     }
 }
@@ -121,9 +129,26 @@ fun TopNav() {
             .paddingFromBaseline(64.dp)
             .padding(horizontal = 16.dp),
     ) {
-        Text(text = "ACCOUNT", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(text = "WATCHLIST", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(text = "ACCOUNT", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
+        Text(
+            text = "ACCOUNT",
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.button
+        )
+        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.disabled) {
+            Text(
+                text = "WATCHLIST",
+                modifier = Modifier.weight(1f),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.button
+            )
+            Text(
+                text = "PROFILE",
+                modifier = Modifier.weight(1f),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.button
+            )
+        }
     }
 }
 
@@ -134,10 +159,22 @@ fun BalanceUpdates() {
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Balance", Modifier.paddingFromBaseline(top = 32.dp))
-        Text("$73,589.01", Modifier.paddingFromBaseline(top = 48.dp))
+        Text(
+            "Balance",
+            Modifier.paddingFromBaseline(top = 32.dp),
+            style = MaterialTheme.typography.subtitle1
+        )
+        Text(
+            "$73,589.01",
+            Modifier.paddingFromBaseline(top = 48.dp),
+            style = MaterialTheme.typography.h1
+        )
         Spacer(modifier = Modifier.height(24.dp))
-        Text("+412.35 today", Modifier.paddingFromBaseline(top = 16.dp))
+        Text(
+            "+412.35 today",
+            Modifier.paddingFromBaseline(top = 16.dp),
+            style = MaterialTheme.typography.subtitle1.copy(color = green)
+        )
     }
 }
 
