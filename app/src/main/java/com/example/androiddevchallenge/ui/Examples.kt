@@ -39,6 +39,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.ui.common.MyButton
 
 @Composable
 fun ExampleComposables(onNavToNextScreen: () -> Unit) {

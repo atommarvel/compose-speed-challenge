@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui
+package com.example.androiddevchallenge.ui.common
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -49,17 +48,5 @@ fun MyButton(
         content = content,
         elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)
-    )
-}
-
-@Composable
-fun MyCard(
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
-) {
-    Card(
-        modifier = modifier,
-        shape = MyShapes.small,
-        content = content
     )
 }

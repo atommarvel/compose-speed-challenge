@@ -15,12 +15,21 @@
  */
 package com.example.androiddevchallenge.ui.screen3
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.Screen1Route
 import com.example.androiddevchallenge.ui.ExampleComposables
+import com.example.androiddevchallenge.ui.common.MyTextField
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
@@ -31,8 +40,35 @@ fun Screen3Root() {
 
 @Composable
 fun Screen3(onNavToNextScreen: () -> Unit = {}) {
+    val showExample = false
+    if (showExample) {
+        ExampleComposables(onNavToNextScreen)
+    } else {
+        Row(modifier = Modifier.fillMaxSize()) {
+            Top()
+            Content()
+            Bottom()
+        }
+    }
+}
 
-    ExampleComposables(onNavToNextScreen)
+@Composable
+fun Top() {
+    Column(
+        modifier = Modifier
+            .background(Color.Red)
+            .padding(top = 40.dp, start = 16.dp, end = 16.dp)
+    ) {
+        MyTextField(showSearchIcon = true, hint = "Search")
+    }
+}
+
+@Composable
+fun Content() {
+}
+
+@Composable
+fun Bottom() {
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
