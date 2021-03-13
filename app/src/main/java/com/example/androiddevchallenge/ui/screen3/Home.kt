@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge.ui.screen3
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,10 +24,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.Divider
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -44,6 +47,7 @@ import com.example.androiddevchallenge.ui.common.MyButton
 import com.example.androiddevchallenge.ui.common.MyChip
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.green
+import com.example.androiddevchallenge.ui.theme.red
 
 @Composable
 fun HomeRoot() {
@@ -85,7 +89,7 @@ fun Home() {
             item { Spacer(modifier = Modifier.height(32.dp)) }
             item { Transact() }
             item { Spacer(modifier = Modifier.height(16.dp)) }
-            item { PurchaseTypes() }
+            item { Chips() }
             item { Spacer(modifier = Modifier.height(16.dp)) }
             item { BigChart() }
             item { Spacer(modifier = Modifier.height(32.dp)) }
@@ -99,28 +103,52 @@ fun Home() {
 
 @Composable
 fun Stock(model: StockModel) {
-    Row(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column {
-            Text(model.price)
-            Text(model.change) // TODO: check isChangePositive and set color!
-        }
-        Column {
-            Text(model.symbol)
-            Text(model.name)
-        }
-        Image(
-            painter = painterResource(model.res),
-            contentDescription = "Drawable Example",
+    Surface {
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 16.dp)
-        )
+                .fillMaxWidth()
+        ) {
+            Divider()
+            Row {
+                Column {
+                    Text(
+                        model.price,
+                        style = MaterialTheme.typography.body1,
+                        modifier = Modifier.paddingFromBaseline(top = 24.dp)
+                    )
+                    val changeColor = if (model.isChangePositive) green else red
+                    Text(
+                        model.change,
+                        style = MaterialTheme.typography.body1.copy(color = changeColor)
+                    )
+                }
+                Column {
+                    Text(
+                        model.symbol,
+                        style = MaterialTheme.typography.h3,
+                        modifier = Modifier.paddingFromBaseline(top = 24.dp)
+                    )
+                    Text(model.name, style = MaterialTheme.typography.body1)
+                }
+                Column(
+                    modifier = Modifier.height(56.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painter = painterResource(model.res),
+                        contentDescription = "Drawable Example",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+        }
     }
 }
 
-// TODO: align center
 @Composable
 fun TopNav() {
     Row(
@@ -191,15 +219,20 @@ fun Transact() {
 }
 
 @Composable
-fun PurchaseTypes() {
+fun Chips() {
     val types =
         listOf("ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds")
     LazyRow {
         item {
+            Spacer(modifier = Modifier.width(16.dp))
             MyChip(onClick = { /*TODO*/ }, label = "Week", showTrailingIcon = true)
         }
         items(types) { type ->
+            Spacer(modifier = Modifier.width(8.dp))
             MyChip(onClick = { /*TODO*/ }, label = type)
+        }
+        item {
+            Spacer(modifier = Modifier.width(16.dp))
         }
     }
 }
@@ -217,7 +250,17 @@ fun BigChart() {
 
 @Composable
 fun PositionsHeader() {
-    Text(text = "Positions", modifier = Modifier.paddingFromBaseline(40.dp))
+    Surface {
+        Text(
+            text = "Positions",
+            modifier = Modifier
+                .paddingFromBaseline(40.dp)
+                .padding(bottom = 24.dp)
+                .fillMaxWidth(),
+            style = MaterialTheme.typography.subtitle1,
+            textAlign = TextAlign.Center
+        )
+    }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
