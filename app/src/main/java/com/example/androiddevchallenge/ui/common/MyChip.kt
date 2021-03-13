@@ -19,6 +19,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
@@ -39,12 +40,12 @@ import com.example.androiddevchallenge.ui.theme.MyShapes
 fun MyChip(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    height: Dp = 48.dp,
+    height: Dp = 40.dp,
     label: String,
     showTrailingIcon: Boolean = false
 ) {
     Button(
-        shape = MyShapes.large,
+        shape = MyShapes.medium,
         onClick = onClick,
         modifier = modifier
             .height(height)
@@ -60,7 +61,8 @@ fun MyChip(
         if (showTrailingIcon) Icon(
             Icons.Default.ExpandMore,
             contentDescription = "Expand",
-            tint = MaterialTheme.colors.onBackground
+            tint = MaterialTheme.colors.onBackground,
+            modifier = Modifier.size(16.dp)
         )
     }
 }
