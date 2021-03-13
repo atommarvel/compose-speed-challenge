@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.LocalContentAlpha
@@ -35,13 +36,16 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.LocalSysUiController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
 import com.example.androiddevchallenge.ui.common.MyChip
@@ -65,7 +69,7 @@ data class StockModel(
 
 val stocks: List<StockModel> by lazy {
     mutableListOf<StockModel>().apply {
-        repeat(10) {
+        repeat(20) {
             add(
                 StockModel(
                     res = R.drawable.ic_home_alk,
@@ -82,8 +86,11 @@ val stocks: List<StockModel> by lazy {
 
 @Composable
 fun Home() {
+    val isLight = MaterialTheme.colors.isLight
+    val (currentlyShowingDarkIcons, setcurrentlyShowingDarkIcons) = remember { mutableStateOf(false) }
+    val listState = rememberLazyListState()
     Surface(color = MaterialTheme.colors.background) {
-        LazyColumn {
+        LazyColumn(state = listState) {
             item { TopNav() }
             item { BalanceUpdates() }
             item { Spacer(modifier = Modifier.height(32.dp)) }
@@ -93,19 +100,29 @@ fun Home() {
             item { Spacer(modifier = Modifier.height(16.dp)) }
             item { BigChart() }
             item { Spacer(modifier = Modifier.height(32.dp)) }
-            item { PositionsHeader() }
+            item { PositionsHeader() } // 9th indexed item!
             items(stocks) { model ->
                 Stock(model)
             }
         }
     }
+    val isSystemUiThresholdMet = (listState.firstVisibleItemIndex >= 9)
+    val shouldShowDarkIcons = isSystemUiThresholdMet && isLight
+    if (currentlyShowingDarkIcons != shouldShowDarkIcons) {
+        ChangeSystemUi(darkIcons = shouldShowDarkIcons)
+        setcurrentlyShowingDarkIcons(shouldShowDarkIcons)
+    }
 }
 
-@Preview
 @Composable
-fun StockPreview() {
-    MyTheme {
-        Stock(stocks.first())
+fun ChangeSystemUi(darkIcons: Boolean) {
+    val sysUiController = LocalSysUiController.current
+    val colors = MaterialTheme.colors
+    SideEffect {
+        sysUiController.setSystemBarsColor(
+            color = colors.surface.copy(alpha = 0.0f),
+            darkIcons = darkIcons,
+        )
     }
 }
 
@@ -269,6 +286,14 @@ fun PositionsHeader() {
             style = MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Center
         )
+    }
+}
+
+// @Preview
+@Composable
+fun StockPreview() {
+    MyTheme {
+        Stock(stocks.first())
     }
 }
 

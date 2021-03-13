@@ -34,6 +34,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -45,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.Home
 import com.example.androiddevchallenge.LocalNavController
+import com.example.androiddevchallenge.LocalSysUiController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -53,6 +55,14 @@ import com.example.androiddevchallenge.ui.theme.white
 @Composable
 fun LoginRoot() {
     val navController = LocalNavController.current
+    val sysUiController = LocalSysUiController.current
+    val colors = MaterialTheme.colors
+    SideEffect {
+        sysUiController.setSystemBarsColor(
+            color = colors.surface.copy(alpha = 0.0f),
+            darkIcons = false,
+        )
+    }
     Login { navController.navigate(Home) }
 }
 

@@ -19,6 +19,7 @@ import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -43,15 +44,18 @@ fun ComposeApp(activity: Activity) {
     CompositionLocalProvider(
         LocalNavController provides rememberNavController(),
     ) {
-        MyTheme {
-            ProvideWindowInsets {
-                NavHost(
-                    navController = LocalNavController.current,
-                    startDestination = Welcome
-                ) {
-                    composable(Welcome) { WelcomeRoot() }
-                    composable(Login) { LoginRoot() }
-                    composable(Home) { HomeRoot() }
+        val systemUiController = remember { SystemUiController(activity.window) }
+        CompositionLocalProvider(LocalSysUiController provides systemUiController) {
+            MyTheme {
+                ProvideWindowInsets {
+                    NavHost(
+                        navController = LocalNavController.current,
+                        startDestination = Welcome
+                    ) {
+                        composable(Welcome) { WelcomeRoot() }
+                        composable(Login) { LoginRoot() }
+                        composable(Home) { HomeRoot() }
+                    }
                 }
             }
         }

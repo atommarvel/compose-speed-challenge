@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -36,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
+import com.example.androiddevchallenge.LocalSysUiController
 import com.example.androiddevchallenge.Login
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
@@ -47,6 +49,14 @@ import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 @Composable
 fun WelcomeRoot() {
     val navController = LocalNavController.current
+    val sysUiController = LocalSysUiController.current
+    val colors = MaterialTheme.colors
+    SideEffect {
+        sysUiController.setSystemBarsColor(
+            color = colors.surface.copy(alpha = 0.0f),
+            darkIcons = false,
+        )
+    }
     WelcomeWeTrade { navController.navigate(Login) }
 }
 
