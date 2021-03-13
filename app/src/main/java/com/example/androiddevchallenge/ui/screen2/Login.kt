@@ -47,6 +47,7 @@ import com.example.androiddevchallenge.Home
 import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
+import com.example.androiddevchallenge.ui.common.MyButtonText
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.white
 
@@ -88,7 +89,7 @@ fun Login(onNavToNextScreen: () -> Unit = {}) {
                 onClick = onNavToNextScreen,
                 modifier = Modifier.padding(horizontal = 8.dp)
             ) {
-                Text(text = "LOG IN")
+                MyButtonText(text = "Log In")
             }
         }
     }
