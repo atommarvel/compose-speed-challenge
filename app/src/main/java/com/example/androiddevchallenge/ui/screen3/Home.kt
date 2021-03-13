@@ -38,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -101,6 +102,14 @@ fun Home() {
     }
 }
 
+@Preview
+@Composable
+fun StockPreview() {
+    MyTheme {
+        Stock(stocks.first())
+    }
+}
+
 @Composable
 fun Stock(model: StockModel) {
     Surface {
@@ -110,7 +119,7 @@ fun Stock(model: StockModel) {
                 .fillMaxWidth()
         ) {
             Divider()
-            Row {
+            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                 Column {
                     Text(
                         model.price,
@@ -123,6 +132,7 @@ fun Stock(model: StockModel) {
                         style = MaterialTheme.typography.body1.copy(color = changeColor)
                     )
                 }
+                Spacer(modifier = Modifier.width(24.dp))
                 Column {
                     Text(
                         model.symbol,
@@ -131,18 +141,15 @@ fun Stock(model: StockModel) {
                     )
                     Text(model.name, style = MaterialTheme.typography.body1)
                 }
-                Column(
-                    modifier = Modifier.height(56.dp),
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(model.res),
-                        contentDescription = "Drawable Example",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                    )
-                }
+                Image(
+                    painter = painterResource(model.res),
+                    contentDescription = "Drawable Example",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .padding(horizontal = 16.dp),
+                    contentScale = ContentScale.Inside
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
         }
@@ -263,7 +270,7 @@ fun PositionsHeader() {
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+// @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
     MyTheme {
@@ -271,7 +278,7 @@ fun LightPreview() {
     }
 }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+// @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
