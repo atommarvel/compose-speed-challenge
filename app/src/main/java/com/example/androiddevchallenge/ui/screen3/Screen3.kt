@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.screen2
+package com.example.androiddevchallenge.ui.screen3
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -21,18 +21,18 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.Screen3Route
+import com.example.androiddevchallenge.Screen1Route
 import com.example.androiddevchallenge.ui.MyButton
-import com.example.androiddevchallenge.ui.MyTheme
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 
 @Composable
-fun Screen2Root() {
-    Screen2()
+fun Screen3Root() {
+    Screen3()
 }
 
 @Composable
-fun Screen2() {
+fun Screen3() {
     Surface {
         Column(
             modifier = Modifier
@@ -41,15 +41,15 @@ fun Screen2() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            ThemeDetectionExample()
+            com.example.androiddevchallenge.ui.screen1.ThemeDetectionExample()
             Spacer(modifier = Modifier.height(8.dp))
-            UnderlinedTextExample()
+            com.example.androiddevchallenge.ui.screen1.UnderlinedTextExample()
             Spacer(modifier = Modifier.height(8.dp))
-            DrawableExample()
+            com.example.androiddevchallenge.ui.screen1.DrawableExample()
             Spacer(modifier = Modifier.height(8.dp))
-            MaterialIconExample()
+            com.example.androiddevchallenge.ui.screen1.MaterialIconExample()
             Spacer(modifier = Modifier.height(8.dp))
-            NavigationExample()
+            com.example.androiddevchallenge.ui.screen1.NavigationExample()
         }
     }
 }
@@ -96,9 +96,9 @@ fun MaterialIconExample() {
 fun NavigationExample() {
     val navController = LocalNavController.current
     MyButton(
-        onClick = { navController.navigate(Screen3Route) }
+        onClick = { navController.navigate(Screen1Route) }
     ) {
-        Text(text = "Navigate to Screen 3")
+        Text(text = "Navigate to Screen 1")
     }
 }
 
@@ -106,7 +106,7 @@ fun NavigationExample() {
 @Composable
 fun LightPreview() {
     MyTheme {
-        Screen2Root()
+        Screen3Root()
     }
 }
 
@@ -114,6 +114,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        Screen2Root()
+        Screen3Root()
     }
 }

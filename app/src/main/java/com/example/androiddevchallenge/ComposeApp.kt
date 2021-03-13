@@ -8,10 +8,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.androiddevchallenge.screen1.Screen1Root
-import com.example.androiddevchallenge.screen2.Screen2Root
-import com.example.androiddevchallenge.screen3.Screen3Root
-import com.example.androiddevchallenge.ui.MyTheme
+import com.example.androiddevchallenge.ui.screen1.Screen1Root
+import com.example.androiddevchallenge.ui.screen2.Screen2Root
+import com.example.androiddevchallenge.ui.screen3.Screen3Root
+import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 // Top level CompositionLocals

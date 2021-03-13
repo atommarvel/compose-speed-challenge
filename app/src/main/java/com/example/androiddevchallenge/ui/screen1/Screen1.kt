@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.screen1
+package com.example.androiddevchallenge.ui.screen1
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -23,7 +23,7 @@ import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.Screen2Route
 import com.example.androiddevchallenge.ui.MyButton
-import com.example.androiddevchallenge.ui.MyTheme
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
 fun Screen1Root() {
