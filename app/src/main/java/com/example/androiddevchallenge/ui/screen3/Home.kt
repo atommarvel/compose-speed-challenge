@@ -43,6 +43,32 @@ fun HomeRoot() {
     Home()
 }
 
+data class StockModel(
+    val res: Int,
+    val symbol: String,
+    val name: String,
+    val price: String,
+    val change: String,
+    val isChangePositive: Boolean
+)
+
+val stocks: List<StockModel> by lazy {
+    mutableListOf<StockModel>().apply {
+        repeat(10) {
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_alk,
+                    symbol = "ALK",
+                    name = "Alaska Air Group, Inc.",
+                    price = "$7.918",
+                    change = "-0.54%",
+                    isChangePositive = false
+                )
+            )
+        }
+    }
+}
+
 @Composable
 fun Home() {
     LazyColumn {
@@ -56,6 +82,23 @@ fun Home() {
         item { BigChart() }
         item { Spacer(modifier = Modifier.height(32.dp)) }
         item { PositionsHeader() }
+        items(stocks) { model ->
+            Stock(model)
+        }
+    }
+}
+
+@Composable
+fun Stock(model: StockModel) {
+    Row(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column {
+            Text(model.price)
+            Text(model.change) // TODO: check isChangePositive and set color!
+        }
+        Column {
+        }
     }
 }
 
