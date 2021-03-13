@@ -31,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
@@ -98,7 +99,16 @@ fun Stock(model: StockModel) {
             Text(model.change) // TODO: check isChangePositive and set color!
         }
         Column {
+            Text(model.symbol)
+            Text(model.name)
         }
+        Image(
+            painter = painterResource(model.res),
+            contentDescription = "Drawable Example",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        )
     }
 }
 
@@ -111,9 +121,9 @@ fun TopNav() {
             .paddingFromBaseline(64.dp)
             .padding(horizontal = 16.dp),
     ) {
-        Text(text = "ACCOUNT", modifier = Modifier.weight(1f))
-        Text(text = "WATCHLIST", modifier = Modifier.weight(1f))
-        Text(text = "ACCOUNT", modifier = Modifier.weight(1f))
+        Text(text = "ACCOUNT", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
+        Text(text = "WATCHLIST", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
+        Text(text = "ACCOUNT", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
     }
 }
 
