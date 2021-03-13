@@ -30,7 +30,10 @@ fun ComposeApp(activity: Activity) {
     ) {
         MyTheme {
             ProvideWindowInsets {
-                NavHost(navController = LocalNavController.current, startDestination = Screen1Route) {
+                NavHost(
+                    navController = LocalNavController.current,
+                    startDestination = Screen1Route
+                ) {
                     composable(Screen1Route) { Screen1Root() }
                     composable(Screen2Route) { Screen2Root() }
                     composable(Screen3Route) { Screen3Root() }
