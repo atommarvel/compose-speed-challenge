@@ -28,7 +28,7 @@ private val LightColorPalette = lightColors(
     surface = white,
     onPrimary = gray900,
     onSecondary = white,
-    onBackground = gray,
+    onBackground = white,
     onSurface = gray900
 )
 
