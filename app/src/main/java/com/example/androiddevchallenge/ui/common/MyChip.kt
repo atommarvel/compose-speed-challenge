@@ -44,7 +44,7 @@ fun MyChip(
     showTrailingIcon: Boolean = false
 ) {
     Button(
-        shape = MyShapes.medium,
+        shape = MyShapes.large,
         onClick = onClick,
         modifier = modifier
             .height(height)
