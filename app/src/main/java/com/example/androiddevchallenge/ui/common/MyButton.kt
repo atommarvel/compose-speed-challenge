@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.ui.common
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,6 +25,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -50,6 +52,29 @@ fun MyButton(
 }
 
 @Composable
+fun MyButtonSecondary(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    height: Dp = 48.dp,
+    content: @Composable RowScope.() -> Unit
+) {
+    Button(
+        shape = MyShapes.large,
+        onClick = onClick,
+        modifier = modifier
+            .height(height)
+            .fillMaxWidth(),
+        content = content,
+        elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Transparent,
+            contentColor = MaterialTheme.colors.primary
+        ),
+        border = BorderStroke(1.dp, MaterialTheme.colors.primary)
+    )
+}
+
+@Composable
 fun MyButtonText(text: String) {
     Text(text = text.toUpperCase())
 }
@@ -62,6 +87,18 @@ fun MyPrimaryButtonPreview() {
             onClick = {}
         ) {
             MyButtonText("Primary Button")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MySecondaryButtonPreview() {
+    MyTheme {
+        MyButtonSecondary(
+            onClick = {}
+        ) {
+            MyButtonText("Secondary Button")
         }
     }
 }
