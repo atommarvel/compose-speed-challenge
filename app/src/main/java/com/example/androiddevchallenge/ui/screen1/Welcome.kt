@@ -39,6 +39,7 @@ import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.Login
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
+import com.example.androiddevchallenge.ui.common.MyButtonSecondary
 import com.example.androiddevchallenge.ui.common.MyButtonText
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.insets.navigationBarsPadding
@@ -86,7 +87,7 @@ fun WelcomeWeTrade(onNavToNextScreen: () -> Unit = {}) {
                         MyButtonText("Get Started")
                     }
                     Spacer(Modifier.width(8.dp))
-                    MyButton(
+                    MyButtonSecondary(
                         onClick = onNavToNextScreen,
                         modifier = Modifier.weight(1f)
                     ) {
