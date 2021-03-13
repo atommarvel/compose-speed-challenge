@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.LocalSysUiController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
+import com.example.androiddevchallenge.ui.common.MyButtonText
 import com.example.androiddevchallenge.ui.common.MyChip
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.green
@@ -69,15 +70,105 @@ data class StockModel(
 
 val stocks: List<StockModel> by lazy {
     mutableListOf<StockModel>().apply {
-        repeat(20) {
+        repeat(2) {
             add(
                 StockModel(
                     res = R.drawable.ic_home_alk,
                     symbol = "ALK",
                     name = "Alaska Air Group, Inc.",
-                    price = "$7.918",
+                    price = "$7,918",
                     change = "-0.54%",
                     isChangePositive = false
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_ba,
+                    symbol = "BA",
+                    name = "Boeing Co.",
+                    price = "$1,293",
+                    change = "+4.18%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_dal,
+                    symbol = "DAL",
+                    name = "Delta Airlines Inc.",
+                    price = "$893.50",
+                    change = "-0.54%",
+                    isChangePositive = false
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_exp,
+                    symbol = "EXPE",
+                    name = "Expedia Group, Inc.",
+                    price = "$12,301",
+                    change = "+2.51%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_eadsy,
+                    symbol = "EADSY",
+                    name = "Airbus SE",
+                    price = "$12,301",
+                    change = "+1.38%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_jblu,
+                    symbol = "JBLU",
+                    name = "Jetblue Airways Corp.",
+                    price = "$8,521",
+                    change = "+1.56%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_mar,
+                    symbol = "MAR",
+                    name = "Marriott International Inc.",
+                    price = "$521",
+                    change = "+2.75%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_ccl,
+                    symbol = "CCL",
+                    name = "Carnival Corp",
+                    price = "$5,481",
+                    change = "+0.14%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_rcl,
+                    symbol = "RCL",
+                    name = "Royal Caribbean Cruises",
+                    price = "$9,184",
+                    change = "+1.69%",
+                    isChangePositive = true
+                )
+            )
+            add(
+                StockModel(
+                    res = R.drawable.ic_home_trvl,
+                    symbol = "TRVL",
+                    name = "Travelocity Inc.",
+                    price = "$654",
+                    change = "+3.23%",
+                    isChangePositive = true
                 )
             )
         }
@@ -240,7 +331,7 @@ fun Transact() {
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
-        Text("TRANSACT")
+        MyButtonText("Transact")
     }
 }
 

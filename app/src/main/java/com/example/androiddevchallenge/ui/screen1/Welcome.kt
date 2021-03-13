@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge.ui.screen1
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +26,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
@@ -63,45 +63,47 @@ fun WelcomeRoot() {
 @Composable
 fun WelcomeWeTrade(onNavToNextScreen: () -> Unit = {}) {
     MyTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
+        Surface(
+            color = MaterialTheme.colors.background,
+            modifier = Modifier.fillMaxSize(),
         ) {
-            Image(
-                painter = painterResource(R.drawable.ic_welcome_bg),
-                contentDescription = null,
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background),
-                contentScale = ContentScale.FillBounds
-            )
-            Image(
-                painter = painterResource(R.drawable.ic_logo),
-                contentDescription = null,
-                modifier = Modifier
                     .navigationBarsPadding(),
-            )
-            Column(
-                modifier = Modifier
-                    .padding(PaddingValues(16.dp, 32.dp))
-                    .navigationBarsPadding()
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Bottom
+                contentAlignment = Alignment.Center,
             ) {
-                Row {
-                    MyButton(
-                        onClick = onNavToNextScreen,
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        MyButtonText("Get Started")
-                    }
-                    Spacer(Modifier.width(8.dp))
-                    MyButtonSecondary(
-                        onClick = onNavToNextScreen,
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        MyButtonText("Log In")
+                Image(
+                    painter = painterResource(R.drawable.ic_welcome_bg),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentScale = ContentScale.FillBounds
+                )
+                Image(
+                    painter = painterResource(R.drawable.ic_logo),
+                    contentDescription = null,
+                )
+                Column(
+                    modifier = Modifier
+                        .padding(PaddingValues(16.dp, 32.dp))
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.Bottom
+                ) {
+                    Row {
+                        MyButton(
+                            onClick = onNavToNextScreen,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            MyButtonText("Get Started")
+                        }
+                        Spacer(Modifier.width(8.dp))
+                        MyButtonSecondary(
+                            onClick = onNavToNextScreen,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            MyButtonText("Log In")
+                        }
                     }
                 }
             }
