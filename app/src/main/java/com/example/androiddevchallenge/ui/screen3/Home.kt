@@ -258,7 +258,9 @@ fun Stock(model: StockModel) {
                 Image(
                     painter = painterResource(model.res),
                     contentDescription = "Drawable Example",
-                    modifier = Modifier.height(56.dp),
+                    modifier = Modifier
+                        .height(56.dp)
+                        .width(80.dp),
                     contentScale = ContentScale.Inside
                 )
             }
