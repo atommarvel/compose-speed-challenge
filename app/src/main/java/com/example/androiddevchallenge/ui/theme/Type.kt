@@ -26,16 +26,24 @@ import com.example.androiddevchallenge.R
 
 val MyFontFamily = FontFamily(
     Font(
-        resId = R.font.nunitosans_bold,
+        resId = R.font.montserrat_extrabold,
+        weight = FontWeight.ExtraBold
+    ),
+    Font(
+        resId = R.font.montserrat_bold,
         weight = FontWeight.Bold,
         style = FontStyle.Normal // If Italics is needed, just replace "Normal" with "Italic". Normal is the default param value.
     ),
     Font(
-        resId = R.font.nunitosans_semibold,
+        resId = R.font.montserrat_semibold,
         weight = FontWeight.SemiBold
     ),
     Font(
-        resId = R.font.nunitosans_light,
+        resId = R.font.montserrat_medium,
+        weight = FontWeight.Medium
+    ),
+    Font(
+        resId = R.font.montserrat_light,
         weight = FontWeight.Light
     ),
 )
@@ -43,44 +51,38 @@ val MyFontFamily = FontFamily(
 val MyTypography = Typography(
     h1 = TextStyle(
         fontFamily = MyFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
-        letterSpacing = 0.sp,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 40.sp,
+        letterSpacing = 1.25.sp,
     ),
     h2 = TextStyle(
         fontFamily = MyFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 14.sp,
-        letterSpacing = 0.15.sp,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 36.sp,
+        letterSpacing = 0.sp,
+    ),
+    h3 = TextStyle(
+        fontFamily = MyFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 13.sp,
+        letterSpacing = 0.sp,
     ),
     subtitle1 = TextStyle(
         fontFamily = MyFontFamily,
-        fontWeight = FontWeight.Light,
-        fontSize = 16.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 15.sp,
         letterSpacing = 0.sp,
     ),
     body1 = TextStyle(
         fontFamily = MyFontFamily,
         fontWeight = FontWeight.Light,
-        fontSize = 14.sp,
-        letterSpacing = 0.sp,
-    ),
-    body2 = TextStyle(
-        fontFamily = MyFontFamily,
-        fontWeight = FontWeight.Light,
-        fontSize = 12.sp,
+        fontSize = 13.sp,
         letterSpacing = 0.sp,
     ),
     button = TextStyle(
         fontFamily = MyFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp,
-        letterSpacing = 1.sp,
-    ),
-    caption = TextStyle(
-        fontFamily = MyFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 12.sp,
-        letterSpacing = 0.sp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 13.sp,
+        letterSpacing = 1.25.sp,
     ),
 )
