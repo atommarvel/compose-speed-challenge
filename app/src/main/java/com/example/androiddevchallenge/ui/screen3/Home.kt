@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.ui.screen3
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,10 +30,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.common.MyButton
-import com.example.androiddevchallenge.ui.common.MyOutlinedButton
+import com.example.androiddevchallenge.ui.common.MyChip
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
@@ -49,6 +52,7 @@ fun Home() {
         item { Transact() }
         item { Spacer(modifier = Modifier.height(16.dp)) }
         item { PurchaseTypes() }
+        item { BigChart() }
     }
 }
 
@@ -98,11 +102,24 @@ fun PurchaseTypes() {
     val types =
         listOf("ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds")
     LazyRow {
-        item { /*display first item with a dropdown*/ }
+        item {
+            MyChip(onClick = { /*TODO*/ }, label = "Week", showTrailingIcon = true)
+        }
         items(types) { type ->
-            MyOutlinedButton(onClick = { /*TODO*/ }, label = type)
+            MyChip(onClick = { /*TODO*/ }, label = type)
         }
     }
+}
+
+@Composable
+fun BigChart() {
+    Image(
+        painter = painterResource(R.drawable.ic_home_illos),
+        contentDescription = "Drawable Example",
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+    )
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

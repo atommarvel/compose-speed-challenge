@@ -15,12 +15,17 @@
  */
 package com.example.androiddevchallenge.ui.common
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,21 +36,31 @@ import com.example.androiddevchallenge.ui.theme.MyShapes
 
 // TODO make outlined
 @Composable
-fun MyOutlinedButton(
+fun MyChip(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     height: Dp = 48.dp,
-    label: String
+    label: String,
+    showTrailingIcon: Boolean = false
 ) {
     Button(
         shape = MyShapes.medium,
         onClick = onClick,
         modifier = modifier
             .height(height)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .border(
+                border = BorderStroke(1.dp, MaterialTheme.colors.onBackground),
+                shape = MyShapes.medium
+            ),
         elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
     ) {
         Text(label, style = TextStyle(color = MaterialTheme.colors.onBackground))
+        if (showTrailingIcon) Icon(
+            Icons.Default.ExpandMore,
+            contentDescription = "Expand",
+            tint = MaterialTheme.colors.onBackground
+        )
     }
 }
