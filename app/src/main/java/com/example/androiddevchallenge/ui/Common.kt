@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth

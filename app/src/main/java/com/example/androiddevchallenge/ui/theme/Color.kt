@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.ui.graphics.Color
 
@@ -25,3 +25,7 @@ val gray = Color(0xFF232323)
 val white = Color(0xFFFFFFFF)
 val white150 = Color(0x26FFFFFF)
 val white850 = Color(0xD9FFFFFF)
+
+
+// For system UI
+const val AlphaNearOpaque = 0.95f

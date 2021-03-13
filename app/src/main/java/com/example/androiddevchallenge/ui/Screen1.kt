@@ -22,8 +22,8 @@ import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.Screen2Route
-import com.example.androiddevchallenge.ui.theme.MyButton
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.MyButton
+import com.example.androiddevchallenge.ui.MyTheme
 
 @Composable
 fun Screen1Root() {
