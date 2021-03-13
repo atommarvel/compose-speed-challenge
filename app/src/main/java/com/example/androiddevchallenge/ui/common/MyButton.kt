@@ -45,25 +45,6 @@ fun MyButton(
             .fillMaxWidth(),
         content = content,
         elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)
-    )
-}
-
-@Composable
-fun MyPrimaryButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    height: Dp = 48.dp,
-    content: @Composable RowScope.() -> Unit
-) {
-    Button(
-        shape = MyShapes.large,
-        onClick = onClick,
-        modifier = modifier
-            .height(height)
-            .fillMaxWidth(),
-        content = content,
-        elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
     )
 }
@@ -72,7 +53,7 @@ fun MyPrimaryButton(
 @Composable
 fun MyPrimaryButtonPreview() {
     MyTheme {
-        MyPrimaryButton(
+        MyButton(
             onClick = {}
         ) {
             Text("Primary Button")
