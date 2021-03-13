@@ -35,7 +35,7 @@ fun MyButton(
     content: @Composable RowScope.() -> Unit
 ) {
     Button(
-        shape = MyShapes.medium,
+        shape = MyShapes.large,
         onClick = onClick,
         modifier = modifier
             .height(height)
