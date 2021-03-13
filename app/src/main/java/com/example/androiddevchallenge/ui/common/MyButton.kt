@@ -21,11 +21,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyShapes
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
 fun MyButton(
@@ -44,4 +47,35 @@ fun MyButton(
         elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)
     )
+}
+
+@Composable
+fun MyPrimaryButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    height: Dp = 48.dp,
+    content: @Composable RowScope.() -> Unit
+) {
+    Button(
+        shape = MyShapes.large,
+        onClick = onClick,
+        modifier = modifier
+            .height(height)
+            .fillMaxWidth(),
+        content = content,
+        elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MyPrimaryButtonPreview() {
+    MyTheme {
+        MyPrimaryButton(
+            onClick = {}
+        ) {
+            Text("Primary Button")
+        }
+    }
 }
