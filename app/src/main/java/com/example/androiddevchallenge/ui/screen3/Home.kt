@@ -19,6 +19,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -229,7 +230,7 @@ fun Stock(model: StockModel) {
             Row(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column {
+                Column(modifier = Modifier.defaultMinSize(minWidth = 64.dp)) {
                     Text(
                         model.price,
                         style = MaterialTheme.typography.body1,
@@ -242,7 +243,6 @@ fun Stock(model: StockModel) {
                         modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp)
                     )
                 }
-                Spacer(modifier = Modifier.width(24.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         model.symbol,
