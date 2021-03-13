@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jetsnack.ui.utils
+package com.example.androiddevchallenge
 
 import android.os.Build
 import android.view.View
