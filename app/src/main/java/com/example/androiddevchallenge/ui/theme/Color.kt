@@ -19,9 +19,16 @@ import androidx.compose.ui.graphics.Color
 
 val pink100 = Color(0xFFFFF1F1)
 val pink900 = Color(0xFF3F2C2C)
-val green900 = Color(0xFF2D3B2D)
+val green = Color(0x39A844)
 val green300 = Color(0xFFB8C9B8)
+val green900 = Color(0xFF2D3B2D)
 val gray = Color(0xFF232323)
+val gray700 = Color(0x2D2D2D)
+val gray900 = Color(0x232323)
 val white = Color(0xFFFFFFFF)
 val white150 = Color(0x26FFFFFF)
 val white850 = Color(0xD9FFFFFF)
+
+val red = Color(0xD93C19)
+val purple = Color(0x322049)
+val yellow = Color(0xE3DA00)
