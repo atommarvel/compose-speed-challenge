@@ -119,7 +119,10 @@ fun Stock(model: StockModel) {
                 .fillMaxWidth()
         ) {
             Divider()
-            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Column {
                     Text(
                         model.price,
@@ -129,7 +132,8 @@ fun Stock(model: StockModel) {
                     val changeColor = if (model.isChangePositive) green else red
                     Text(
                         model.change,
-                        style = MaterialTheme.typography.body1.copy(color = changeColor)
+                        style = MaterialTheme.typography.body1.copy(color = changeColor),
+                        modifier = Modifier.paddingFromBaseline(top = 16.dp)
                     )
                 }
                 Spacer(modifier = Modifier.width(24.dp))
@@ -139,15 +143,16 @@ fun Stock(model: StockModel) {
                         style = MaterialTheme.typography.h3,
                         modifier = Modifier.paddingFromBaseline(top = 24.dp)
                     )
-                    Text(model.name, style = MaterialTheme.typography.body1)
+                    Text(
+                        model.name,
+                        style = MaterialTheme.typography.body1,
+                        modifier = Modifier.paddingFromBaseline(top = 16.dp)
+                    )
                 }
                 Image(
                     painter = painterResource(model.res),
                     contentDescription = "Drawable Example",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp)
-                        .padding(horizontal = 16.dp),
+                    modifier = Modifier.height(56.dp),
                     contentScale = ContentScale.Inside
                 )
             }
