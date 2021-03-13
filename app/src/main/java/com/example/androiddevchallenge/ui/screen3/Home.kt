@@ -52,7 +52,10 @@ fun Home() {
         item { Transact() }
         item { Spacer(modifier = Modifier.height(16.dp)) }
         item { PurchaseTypes() }
+        item { Spacer(modifier = Modifier.height(16.dp)) }
         item { BigChart() }
+        item { Spacer(modifier = Modifier.height(32.dp)) }
+        item { PositionsHeader() }
     }
 }
 
@@ -120,6 +123,11 @@ fun BigChart() {
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     )
+}
+
+@Composable
+fun PositionsHeader() {
+    Text(text = "Positions", modifier = Modifier.paddingFromBaseline(40.dp))
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
