@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge.ui.screen3
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -120,7 +119,6 @@ fun Stock(model: StockModel) {
         ) {
             Divider()
             Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column {
@@ -137,7 +135,7 @@ fun Stock(model: StockModel) {
                     )
                 }
                 Spacer(modifier = Modifier.width(24.dp))
-                Column {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         model.symbol,
                         style = MaterialTheme.typography.h3,
