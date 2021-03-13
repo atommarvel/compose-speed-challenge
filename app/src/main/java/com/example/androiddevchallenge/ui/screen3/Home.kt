@@ -361,7 +361,8 @@ fun BigChart() {
         contentDescription = "Drawable Example",
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp),
+        contentScale = ContentScale.FillWidth
     )
 }
 
