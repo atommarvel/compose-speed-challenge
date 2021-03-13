@@ -131,7 +131,7 @@ fun Stock(model: StockModel) {
                     Text(
                         model.change,
                         style = MaterialTheme.typography.body1.copy(color = changeColor),
-                        modifier = Modifier.paddingFromBaseline(top = 16.dp)
+                        modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp)
                     )
                 }
                 Spacer(modifier = Modifier.width(24.dp))
@@ -144,7 +144,7 @@ fun Stock(model: StockModel) {
                     Text(
                         model.name,
                         style = MaterialTheme.typography.body1,
-                        modifier = Modifier.paddingFromBaseline(top = 16.dp)
+                        modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp)
                     )
                 }
                 Image(
@@ -154,7 +154,6 @@ fun Stock(model: StockModel) {
                     contentScale = ContentScale.Inside
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
