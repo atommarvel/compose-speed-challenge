@@ -15,30 +15,66 @@
  */
 package com.example.androiddevchallenge.ui.screen1
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.LocalNavController
 import com.example.androiddevchallenge.Login
-import com.example.androiddevchallenge.ui.ExampleComposables
+import com.example.androiddevchallenge.ui.common.MyButton
+import com.example.androiddevchallenge.ui.common.MyButtonText
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 
 @Composable
 fun WelcomeRoot() {
     val navController = LocalNavController.current
-    Welcome { navController.navigate(Login) }
+    WelcomeWeTrade { navController.navigate(Login) }
 }
 
 @Composable
-fun Welcome(onNavToNextScreen: () -> Unit = {}) {
-    ExampleComposables(onNavToNextScreen)
+fun WelcomeWeTrade(onNavToNextScreen: () -> Unit = {}) {
+    MyTheme {
+        Column(
+            modifier = Modifier
+                .padding(PaddingValues(16.dp, 32.dp))
+                .navigationBarsPadding()
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom
+        ) {
+            Row {
+                MyButton(
+                    onClick = onNavToNextScreen,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    MyButtonText("Get Started")
+                }
+                Spacer(Modifier.width(8.dp))
+                MyButton(
+                    onClick = onNavToNextScreen,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    MyButtonText("Log In")
+                }
+            }
+        }
+    }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
     MyTheme {
-        Welcome()
+        WelcomeWeTrade()
     }
 }
 
@@ -46,6 +82,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        Welcome()
+        WelcomeWeTrade()
     }
 }

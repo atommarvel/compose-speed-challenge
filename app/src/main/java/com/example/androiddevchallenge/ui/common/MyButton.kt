@@ -49,6 +49,11 @@ fun MyButton(
     )
 }
 
+@Composable
+fun MyButtonText(text: String) {
+    Text(text = text.toUpperCase())
+}
+
 @Preview(showBackground = true)
 @Composable
 fun MyPrimaryButtonPreview() {
@@ -56,7 +61,7 @@ fun MyPrimaryButtonPreview() {
         MyButton(
             onClick = {}
         ) {
-            Text("Primary Button")
+            MyButtonText("Primary Button")
         }
     }
 }
