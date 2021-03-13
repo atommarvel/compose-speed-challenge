@@ -15,8 +15,24 @@
  */
 package com.example.androiddevchallenge.ui.screen3
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.ui.common.MyButton
+import com.example.androiddevchallenge.ui.common.MyOutlinedButton
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
@@ -26,6 +42,67 @@ fun HomeRoot() {
 
 @Composable
 fun Home() {
+    LazyColumn {
+        item { TopNav() }
+        item { BalanceUpdates() }
+        item { Spacer(modifier = Modifier.height(32.dp)) }
+        item { Transact() }
+        item { Spacer(modifier = Modifier.height(16.dp)) }
+        item { PurchaseTypes() }
+    }
+}
+
+// TODO: align center
+@Composable
+fun TopNav() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .paddingFromBaseline(64.dp)
+            .padding(horizontal = 16.dp),
+    ) {
+        Text(text = "ACCOUNT", modifier = Modifier.weight(1f))
+        Text(text = "WATCHLIST", modifier = Modifier.weight(1f))
+        Text(text = "ACCOUNT", modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+fun BalanceUpdates() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("Balance", Modifier.paddingFromBaseline(top = 32.dp))
+        Text("$73,589.01", Modifier.paddingFromBaseline(top = 48.dp))
+        Spacer(modifier = Modifier.height(24.dp))
+        Text("+412.35 today", Modifier.paddingFromBaseline(top = 16.dp))
+    }
+}
+
+@Composable
+fun Transact() {
+    MyButton(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+    ) {
+        Text("TRANSACT")
+    }
+}
+
+@Composable
+fun PurchaseTypes() {
+    val types =
+        listOf("ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds", "ETFs", "Stocks", "Funds")
+    LazyRow {
+        item { /*display first item with a dropdown*/ }
+        items(types) { type ->
+            MyOutlinedButton(onClick = { /*TODO*/ }, label = type)
+        }
+    }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
